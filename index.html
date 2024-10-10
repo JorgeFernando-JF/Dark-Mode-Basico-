@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark-Mode</title>
+    <script src="https://kit.fontawesome.com/37b0d771a1.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-color: #fff;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+            text-align: center;
+        }
+        .dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+        button#dark-mode-toggle {
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        button#dark-mode-toggle i {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+        </style>
+</head>
+<body>
+    <h2 id="texto-alterado">Clique no Sol para ativar o Dark-Mode</h2>
+    <button id="dark-mode-toggle">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon" style="display: none;"></i>
+    </button>
+    <p> E veja a mágica acontecer!</p>
+
+    <script>
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const body = document.body;
+        const texto = document.getElementById('texto-alterado');
+
+        darkModeToggle.addEventListener ("click", () => {
+            body.classList.toggle ("dark-mode");
+            const sunIcon = darkModeToggle.querySelector('.fas.fa-sun');
+            const moonIcon = darkModeToggle.querySelector('.fas.fa-moon');
+
+            if (body.classList.contains ("dark-mode")) {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'inline';
+                moonIcon.style.color = '#fff';
+                texto.textContent = 'Clique na Lua para desativar o Dark-Mode';
+            } else {
+                sunIcon.style.display = 'inline';
+                moonIcon.style.display = 'none';
+                texto.textContent = 'Clique no Sol para ativar o Dark-Mode';
+            }
+        });
+    </script>
+</body>
+</html>
